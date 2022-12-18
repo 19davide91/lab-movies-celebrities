@@ -6,11 +6,11 @@ router.get("/celebrities", (req, res, next) => {
   res.render("celebrities/celebrities");
 });
 
-app.get("/celebrities/create", (req, res) => {
+router.get("/celebrities/create", (req, res) => {
   res.render("celebrities/new-celebrity");
 });
 
-app.post("/celebrities/createm", (req, res) => {
+router.post("/celebrities/createm", (req, res) => {
   const { name, occupation, catchPhrase } = req.body;
   Celebrity.create({ name, occupation, catchPhrase }).catch((error) =>
     console.log(error)
