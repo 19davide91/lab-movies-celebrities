@@ -3,17 +3,21 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const celebritySchema = new Schema({
-  name: {
+const movieSchema = new Schema({
+  title: {
     type: String,
     required: true,
   },
-  occupation: {
+  genre: {
     type: String,
   },
-  catchPhrase: {
+  plot: {
     type: String,
   },
+  cast: {
+    type: String,
+  },
+  celebritiesId: [{ type: mongoose.Schema.Types.ObjectId, ref: "Celebrity" }],
 });
 
 const Celebrity = mongoose.model("Celebrity", celebritySchema);
