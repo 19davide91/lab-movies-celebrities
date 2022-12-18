@@ -14,6 +14,7 @@ const celebritySchema = new Schema({
   catchPhrase: {
     type: String,
   },
+  celebritiesId: [{ type: mongoose.Schema.Types.ObjectId, ref: "Celebrity" }],
 });
 
 const Celebrity = mongoose.model("Celebrity", celebritySchema);
