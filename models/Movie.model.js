@@ -6,7 +6,6 @@ const { Schema } = mongoose;
 const movieSchema = new Schema({
   title: {
     type: String,
-    required: true,
   },
   genre: {
     type: String,
@@ -14,12 +13,9 @@ const movieSchema = new Schema({
   plot: {
     type: String,
   },
-  cast: {
-    type: String,
-  },
-  celebritiesId: [{ type: mongoose.Schema.Types.ObjectId, ref: "Celebrity" }],
+  cast: [{ type: mongoose.Schema.Types.ObjectId, ref: "Celebrity" }],
 });
 
-const Celebrity = mongoose.model("Celebrity", celebritySchema);
+const Movie = mongoose.model("Movie", movieSchema);
 
-module.exports = Celebrity;
+module.exports = Movie;
