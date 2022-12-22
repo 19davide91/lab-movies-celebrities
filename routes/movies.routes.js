@@ -26,4 +26,35 @@ router.post("/movies/create", (req, res) => {
     });
 });
 
+router.get("/movies/:id", (req, res) => {
+  Movie.findOne({ title })
+    .populate("cast")
+    .then((allCast) => {
+      res.render("movies/movie-details", { allCast });
+    })
+    .catch((error) => console.log(error));
+});
+
+router.post("/movies/:id/delete", (req, res) => {
+  Movie.findByIdAndDelete(Id)
+    .then(() => res.redirect("/movies"))
+    .catch((error) => console.log(error));
+});
+
+router.post("/movies/:id/edit", (req, res) => {
+  Movie.findOne(Id);
+  Celebrity.find()
+    .then(() => res.render("/movies/edit-movie"))
+    .catch((error) => console.log(error));
+});
+
+router.post("/movies/:id", (req, res) => {
+  const { title, genre, plot, cast } = req.body;
+
+  Movie.update({ title })
+    .then(() => res.redirect("/movies"))
+    .catch((error) => {
+      console.log(error);
+    });
+});
 module.exports = router;
